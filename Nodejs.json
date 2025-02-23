@@ -1,0 +1,43 @@
+{
+  "meta": {
+    "version": "PTDL_v2",
+    "update_url": null
+  },
+  "exported_at": "2025-02-23T00:00:00Z",
+  "name": "Node.js Console Mode",
+  "author": "Your Name",
+  "description": "A Node.js egg that allows executing commands directly from the console.",
+  "features": [
+    "nodejs"
+  ],
+  "docker_images": {
+    "node_latest": "node:latest"
+  },
+  "file_denylist": [],
+  "startup": "tail -f /dev/null",
+  "config": {
+    "files": {},
+    "startup": {
+      "done": "Server ready",
+      "userInteraction": []
+    },
+    "logs": {
+      "custom": false,
+      "location": "logs/latest.log"
+    },
+    "stop": "exit"
+  },
+  "scripts": {
+    "installation": {
+      "script": "#!/bin/sh\nmkdir -p /mnt/server\ncd /mnt/server\nnpm install",
+      "container": "node:latest",
+      "entrypoint": "bash"
+    },
+    "update": {
+      "script": "#!/bin/sh\ncd /mnt/server\nnpm update",
+      "container": "node:latest",
+      "entrypoint": "bash"
+    }
+  },
+  "variables": []
+}
